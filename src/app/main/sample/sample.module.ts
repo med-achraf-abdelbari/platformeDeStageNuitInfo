@@ -15,7 +15,7 @@ const routes = [
 
 @NgModule({
     declarations: [
-        SampleComponent
+        SampleComponent, 
     ],
     imports     : [
         RouterModule.forChild(routes),

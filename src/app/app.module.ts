@@ -18,8 +18,17 @@ import { fuseConfig } from 'app/fuse-config';
 import { AppComponent } from 'app/app.component';
 import { LayoutModule } from 'app/layout/layout.module';
 import { SampleModule } from 'app/main/sample/sample.module';
+import { StagesComponent } from './stages/stages.component';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import { UICardsModule } from './cards/cards.module';
 
 const appRoutes: Routes = [
+    {
+        path :'', 
+        component : StagesComponent
+    },
+    { path: 'Auth', loadChildren: () => import(`./main/sample/login/login.module`).then(m => m.LoginModule) },
+    { path: 'Auth', loadChildren: () => import(`./main/sample/register/register.module`).then(m => m.RegisterModule) },
     {
         path      : '**',
         redirectTo: 'sample'
@@ -28,14 +37,16 @@ const appRoutes: Routes = [
 
 @NgModule({
     declarations: [
-        AppComponent
+        AppComponent,
+        StagesComponent, 
+        
     ],
     imports     : [
         BrowserModule,
         BrowserAnimationsModule,
         HttpClientModule,
         RouterModule.forRoot(appRoutes),
-
+        UICardsModule,
         TranslateModule.forRoot(),
 
         // Material moment date module
