@@ -21,11 +21,17 @@ import { SampleModule } from 'app/main/sample/sample.module';
 import { StagesComponent } from './stages/stages.component';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { UICardsModule } from './cards/cards.module';
+import { DetailsStageComponent } from './details-stage/details-stage.component';
+import {MatTabsModule} from '@angular/material/tabs';
 
 const appRoutes: Routes = [
     {
         path :'', 
         component : StagesComponent
+    },
+    {
+        path : 'detailsStage/:id', 
+        component : DetailsStageComponent
     },
     { path: 'Auth', loadChildren: () => import(`./main/sample/login/login.module`).then(m => m.LoginModule) },
     { path: 'Auth', loadChildren: () => import(`./main/sample/register/register.module`).then(m => m.RegisterModule) },
@@ -38,7 +44,8 @@ const appRoutes: Routes = [
 @NgModule({
     declarations: [
         AppComponent,
-        StagesComponent, 
+        StagesComponent,
+        DetailsStageComponent, 
         
     ],
     imports     : [
@@ -48,7 +55,7 @@ const appRoutes: Routes = [
         RouterModule.forRoot(appRoutes),
         UICardsModule,
         TranslateModule.forRoot(),
-
+        MatTabsModule,
         // Material moment date module
         MatMomentDateModule,
 
